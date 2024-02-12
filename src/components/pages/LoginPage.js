@@ -20,6 +20,8 @@ export default function SignInPage() {
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
+                const { token } = await response.json();
+                localStorage.setItem('token',token)
                 console.log('User logged in successfully');
                 navigate("/home"); // Redirect to home page
             } else {
